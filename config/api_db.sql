@@ -1,0 +1,11 @@
+CREATE DATABASE api_db;
+
+USE api_db;
+
+CREATE TABLE motors (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    marca VARCHAR(100) NOT NULL UNIQUE,
+    cilindrada INT NOT NULL UNIQUE,
+    ano INT NOT NULL UNIQUE
+);
