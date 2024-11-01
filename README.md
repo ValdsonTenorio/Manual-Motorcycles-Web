@@ -27,3 +27,6 @@ Principais Usuários do projeto:
 [PHP Unit]()
 
 [MySql]()
+
+[Lucidchart](https://lucid.app/)
+
