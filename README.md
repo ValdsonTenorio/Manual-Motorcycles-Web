@@ -11,7 +11,7 @@ O site tem o intuito de guiar motociclistas, e especialistas iniciantes em motos
 ## Diagrama
 
 
-[MySql](https://drive.google.com/file/d/1mUV9jCtnb-vYhszYj9jVJ_i8yFYv1Vaf/view?usp=sharing)
+[Diagrama Draw.io](https://drive.google.com/file/d/1mUV9jCtnb-vYhszYj9jVJ_i8yFYv1Vaf/view?usp=sharing)
 
 
 ## Usado por
