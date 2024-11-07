@@ -10,14 +10,15 @@ class Motor
         $this->conn = $db;
     }
 
-    public function create($name, $oil, $transmission, $battery)
+    
+    public function create($type, $price, $description, $id_motors)
     {
-        $sql = "INSERT INTO parts (name,oil,transmission,battery ) VALUES (:name, :oil, :transmission,:battery)";
+        $sql = "INSERT INTO parts (type,price,description,id_motors ) VALUES (:type, :price, :description,:id_motors)";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':oil', $oil);
-        $stmt->bindParam(':transmission', $transmission);
-        $stmt->bindParam(':battery', $battery);
+        $stmt->bindParam(':type', $type);
+        $stmt->bindParam(':price', $price);
+        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':id_motors', $id_motors);
         return $stmt->execute();
     }
 
@@ -38,15 +39,15 @@ class Motor
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function update($id, $name, $oil, $transmission, $battery)
+    public function update($id,$type, $price, $description, $id_motors)
     {
-        $sql = "UPDATE parts SET name = :name, oil = :oil, transmission = :transmission, battery = :battery WHERE id = :id";
+        $sql = "UPDATE parts SET type = :type, price = :price, description = :description, id_motors = :id_motors WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':oil', $oil);
-        $stmt->bindParam(':transmission', $transmission);
-        $stmt->bindParam(':battery', $battery);
+        $stmt->bindParam(':type', $type);
+        $stmt->bindParam(':price', $price);
+        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':id_motors', $id_motors);
         $stmt->execute();
         return $stmt->rowCount();
     }

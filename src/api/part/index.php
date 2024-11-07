@@ -8,11 +8,11 @@ header("Content-type: application/json; charset=UTF-8");
 $router = new Router();
 $controller = new PartController($pdo);
 
-$router->add('GET', '/parts', [$controller, 'list']);
-$router->add('GET', '/parts/{id}', [$controller, 'getById']);
-$router->add('POST', '/parts', [$controller, 'create']);
-$router->add('DELETE', '/parts/{id}', [$controller, 'delete']);
-$router->add('PUT', '/parts/{id}', [$controller, 'update']);
+$router->add('GET', '/', [$controller, 'list']);
+$router->add('GET', '/{id}', [$controller, 'getById']);
+$router->add('POST', '/', [$controller, 'create']);
+$router->add('DELETE', '/{id}', [$controller, 'delete']);
+$router->add('PUT', '/{id}', [$controller, 'update']);
 
 $requestedPath = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 $pathItems = explode("/", $requestedPath);

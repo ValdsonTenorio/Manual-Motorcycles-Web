@@ -15,13 +15,12 @@ class PartController
         $part = $this->part->list();
         echo json_encode($part);
     }
-
     public function create()
     {
         $data = json_decode(file_get_contents("php://input"));
-        if (isset($data->name) && isset($data->oil) && isset($data->transmission) && isset($data->battery)) {
+        if (isset($data->type) && isset($data->price) && isset($data->description) && isset($data->id_motors)) {
             try {
-                $this->motors->create($data->name, $data->oil, $data->transmission, $data->battery);
+                $this->parts->create($data->type, $data->price, $data->description, $data->id_motors);
 
                 http_response_code(201);
                 echo json_encode(["message" => "Moto Cadastrada Com Sucesso"]);
@@ -59,9 +58,9 @@ class PartController
     public function update()
     {
         $data = json_decode(file_get_contents("php://input"));
-        if (isset($data->name) && isset($data->oil) && isset($data->transmission) && isset($data->battery)) {
+        if (isset($id) && ($data->type) && isset($data->price) && isset($data->description) && isset($data->id_motors)) {
             try {
-                $count = $this->part->update($data->id, $data->name, $data->oil, $data->transmission, $data->battery);
+                $count = $this->part->update($data->id, $data->type, $data->price, $data->description, $data->id_motors);
                 if ($count > 0) {
                     http_response_code(200);
                     echo json_encode(["message" => "Cadastro atualizado com sucesso."]);

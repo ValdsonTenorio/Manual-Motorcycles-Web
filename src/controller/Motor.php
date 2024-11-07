@@ -59,7 +59,7 @@ class MotorController
     public function update()
     {
         $data = json_decode(file_get_contents("php://input"));
-        if (isset($data->name) && isset($data->mark) && isset($data->cylinder) && isset($data->year)) {
+        if (isset($id) && ($data->name) && isset($data->mark) && isset($data->cylinder) && isset($data->year)) {
             try {
                 $count = $this->motor->update($data->id, $data->name, $data->mark, $data->cylinder, $data->year);
                 if ($count > 0) {
