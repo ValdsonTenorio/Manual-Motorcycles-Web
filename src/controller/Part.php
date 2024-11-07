@@ -1,27 +1,27 @@
 <?php
-require_once '../models/Motor.php';
+require_once '../models/Part.php';
 
-class MotorController
+class PartController
 {
-    private $motor;
+    private $part;
 
     public function __construct($db)
     {
-        $this->motor = new Motor($db);
+        $this->part = new Part($db);
     }
 
     public function list()
     {
-        $motor = $this->motor->list();
-        echo json_encode($motor);
+        $part = $this->part->list();
+        echo json_encode($part);
     }
 
     public function create()
     {
         $data = json_decode(file_get_contents("php://input"));
-        if (isset($data->name) && isset($data->mark) && isset($data->cylinder) && isset($data->year)) {
+        if (isset($data->name) && isset($data->oil) && isset($data->transmission) && isset($data->battery)) {
             try {
-                $this->motors->create($data->name, $data->mark, $data->cylinder, $data->year);
+                $this->motors->create($data->name, $data->oil, $data->transmission, $data->battery);
 
                 http_response_code(201);
                 echo json_encode(["message" => "Moto Cadastrada Com Sucesso"]);
@@ -39,9 +39,9 @@ class MotorController
     {
         if (isset($id)) {
             try {
-                $motor = $this->motor->getById($id);
-                if ($motor) {
-                    echo json_encode($motor);
+                $part = $this->part->getById($id);
+                if ($part) {
+                    echo json_encode($part);
                 } else {
                     http_response_code(404);
                     echo json_encode(["message" => "Cadastro não encontrado"]);
@@ -59,9 +59,9 @@ class MotorController
     public function update()
     {
         $data = json_decode(file_get_contents("php://input"));
-        if (isset($data->name) && isset($data->mark) && isset($data->cylinder) && isset($data->year)) {
+        if (isset($data->name) && isset($data->oil) && isset($data->transmission) && isset($data->battery)) {
             try {
-                $count = $this->motor->update($data->id, $data->name, $data->mark, $data->cylinder, $data->year);
+                $count = $this->part->update($data->id, $data->name, $data->oil, $data->transmission, $data->battery);
                 if ($count > 0) {
                     http_response_code(200);
                     echo json_encode(["message" => "Cadastro atualizado com sucesso."]);
@@ -84,7 +84,7 @@ class MotorController
         $data = json_decode(file_get_contents("php://input"));
         if (isset($data->id)) {
             try {
-                $count = $this->motor->delete($data->id);
+                $count = $this->part->delete($data->id);
 
                 if ($count > 0) {
                     http_response_code(200);
