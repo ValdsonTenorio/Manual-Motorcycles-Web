@@ -1,5 +1,5 @@
 <?php
-require_once '../models/Motor.php';
+require_once '../model/Motor.php';
 
 class MotorController
 {
@@ -19,9 +19,9 @@ class MotorController
     public function create()
     {
         $data = json_decode(file_get_contents("php://input"));
-        if (isset($data->name) && isset($data->mark) && isset($data->cylinder) && isset($data->year)) {
+        if (isset($data->nome) && isset($data->mark) && isset($data->cylinder) && isset($data->ano)) {
             try {
-                $this->motors->create($data->name, $data->mark, $data->cylinder, $data->year);
+                $this->motors->create($data->nome, $data->mark, $data->cylinder, $data->ano);
 
                 http_response_code(201);
                 echo json_encode(["message" => "Moto Cadastrada Com Sucesso"]);
@@ -59,9 +59,9 @@ class MotorController
     public function update()
     {
         $data = json_decode(file_get_contents("php://input"));
-        if (isset($id) && ($data->name) && isset($data->mark) && isset($data->cylinder) && isset($data->year)) {
+        if (isset($id) && ($data->nome) && isset($data->mark) && isset($data->cylinder) && isset($data->ano)) {
             try {
-                $count = $this->motor->update($data->id, $data->name, $data->mark, $data->cylinder, $data->year);
+                $count = $this->motor->update($data->id, $data->nome, $data->mark, $data->cylinder, $data->ano);
                 if ($count > 0) {
                     http_response_code(200);
                     echo json_encode(["message" => "Cadastro atualizado com sucesso."]);

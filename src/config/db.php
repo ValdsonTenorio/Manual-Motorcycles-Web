@@ -1,8 +1,8 @@
 <?php
-$host = '192.168.100.86';
+$host = 'localhost';
 $db = 'api';
-$user = 'admin';
-$pass = 'admin';
+$user = 'postgres';
+$pass = 'unigran';
 
 try {
     $pdo = new PDO("pgsql:host=$host;dbname=$db", $user, $pass);

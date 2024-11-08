@@ -1,5 +1,5 @@
 <?php
-require_once '../models/Part.php';
+require_once '../model/Part.php';
 
 class PartController
 {
@@ -18,9 +18,9 @@ class PartController
     public function create()
     {
         $data = json_decode(file_get_contents("php://input"));
-        if (isset($data->type) && isset($data->price) && isset($data->description) && isset($data->id_motors)) {
+        if (isset($data->tipo) && isset($data->price) && isset($data->descricao) && isset($data->id_motors)) {
             try {
-                $this->parts->create($data->type, $data->price, $data->description, $data->id_motors);
+                $this->parts->create($data->tipo, $data->price, $data->descricao, $data->id_motors);
 
                 http_response_code(201);
                 echo json_encode(["message" => "Moto Cadastrada Com Sucesso"]);
@@ -58,9 +58,9 @@ class PartController
     public function update()
     {
         $data = json_decode(file_get_contents("php://input"));
-        if (isset($id) && ($data->type) && isset($data->price) && isset($data->description) && isset($data->id_motors)) {
+        if (isset($id) && ($data->tipo) && isset($data->price) && isset($data->descricao) && isset($data->id_motors)) {
             try {
-                $count = $this->part->update($data->id, $data->type, $data->price, $data->description, $data->id_motors);
+                $count = $this->part->update($data->id, $data->tipo, $data->price, $data->descricao, $data->id_motors);
                 if ($count > 0) {
                     http_response_code(200);
                     echo json_encode(["message" => "Cadastro atualizado com sucesso."]);

@@ -10,20 +10,20 @@ class Motor
         $this->conn = $db;
     }
 
-    public function create($name, $mark, $cylinder,$year)
+    public function create($nome, $mark, $cylinder,$ano)
     {
-        $sql = "INSERT INTO motors (name,mark,cylinder,year ) VALUES (:name, :mark, :cylinder,:year)";
+        $sql = "INSERT INTO motors (nome,mark,cylinder,year ) VALUES (:nome, :mark, :cylinder,:ano)";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':nome', $nome);
         $stmt->bindParam(':mark', $mark);
         $stmt->bindParam(':cylinder', $cylinder);
-        $stmt->bindParam(':year', $year);
+        $stmt->bindParam(':ano', $ano);
         return $stmt->execute();
     }
 
     public function list()
     {
-        $sql = "SELECT id, name FROM motors";
+        $sql = "SELECT * FROM motors";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -38,15 +38,15 @@ class Motor
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function update($id, $name, $mark, $cylinder,$year)
+    public function update($id, $nome, $mark, $cylinder,$ano)
     {
-        $sql = "UPDATE motors SET name = :name, mark = :mark, cylinder = :cylinder, year = :year WHERE id = :id";
+        $sql = "UPDATE motors SET nome = :nome, mark = :mark, cylinder = :cylinder, ano = :ano WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':nome', $nome);
         $stmt->bindParam(':mark', $mark);
         $stmt->bindParam(':cylinder', $cylinder);
-        $stmt->bindParam(':year', $year);
+        $stmt->bindParam(':ano', $ano);
         $stmt->execute();
         return $stmt->rowCount();
     }
