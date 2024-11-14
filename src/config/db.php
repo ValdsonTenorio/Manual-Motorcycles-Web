@@ -4,9 +4,9 @@
 class Database {
 
     static $host = 'localhost';
-    static $db = 'postgres';
+    static $db = 'api_db';
     static $user = 'postgres';
-    static $pass = '20033002';
+    static $pass = 'unigran';
 
     static private $instance;
 

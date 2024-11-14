@@ -1,4 +1,6 @@
 <?php
+
+use SebastianBergmann\Environment\Console;
 require_once '../model/Motor.php';
 
 class MotorController
@@ -35,7 +37,6 @@ class MotorController
                 http_response_code(201);
                 echo json_encode(["message" => "Moto Cadastrada Com Sucesso"]);
             } catch (\Throwable $th) {
-                print_r($th);
                 http_response_code(500);
                 echo json_encode(["message" => "Erro ao cadastrar moto"]);
             }

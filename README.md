@@ -7,12 +7,23 @@ O site tem o intuito de guiar motociclistas, e especialistas iniciantes em motos
 
 - [@ValdsonTenorio](https://github.com/ValdsonTenorio)
 
+## Dados Necessários Banco
 
-## Rotas(Banco PostgreSQL)
+    $host = 'localhost';
+    $db = 'api_db';
+    $user = 'postgres';
+    $pass = 'unigran';
+
+## Rotas FrontEnd
+
+http://localhost:8000/src/public/
+
+## Rotas Backend
 
 http://localhost:8000/src/api/motor
 
 http://localhost:8000/src/api/part
+
 ## Diagrama
 
 
