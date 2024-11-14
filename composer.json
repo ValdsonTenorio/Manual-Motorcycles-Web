@@ -1,7 +1,7 @@
 {
     "name": "laboratorio/manual-motorcycles-web",
     "require-dev": {
-        "phpunit/phpunit": "^11.3"
+        "phpunit/phpunit": "^11.4"
     },
     "autoload": {
         "psr-4": {
@@ -18,6 +18,5 @@
             "name": "Valdson Martins Tenorio",
             "email": "valdsonmartinstenorio721@gmail.com"
         }
-    ],
-    "require": {}
+    ]
 }

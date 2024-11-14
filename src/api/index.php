@@ -25,6 +25,16 @@ $router->add('GET', '/part', function () {
     }
 });
 
+$router->add('GET', '/part/motor', function () { 
+    if(isset($_GET["id"])){
+        PartController::getInstance()->getByMotoId($_GET["id"]);
+    }else {
+        echo json_encode([
+            "msg" => "Parametro Id da moto não presente"
+        ]);
+    }
+});
+
 
 $router->add('POST', '/part', function () { PartController::getInstance()->create();});
 $router->add('DELETE', '/part', function () { PartController::getInstance()->delete();});

@@ -13,7 +13,7 @@ CREATE TABLE parts(
     id SERIAL PRIMARY KEY,
     tipo VARCHAR(100) NOT NULL,
     price FLOAT NOT NULL,
-    descricao VARCHAR(10) NOT NULL,
+    descricao VARCHAR(100) NOT NULL,
     id_motors INT NOT NULL,
     FOREIGN KEY (id_motors) REFERENCES motors(id)
 );

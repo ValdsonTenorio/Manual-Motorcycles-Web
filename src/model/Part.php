@@ -39,6 +39,14 @@ class Part
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getByMotoId($id)
+    {
+        $sql = "SELECT * FROM parts WHERE id_motors = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     public function update($id,$tipo, $price, $descricao, $id_motors)
     {
         $sql = "UPDATE parts SET tipo = :tipo, price = :price, descricao = :descricao, id_motors = :id_motors WHERE id = :id";
