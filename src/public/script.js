@@ -38,7 +38,9 @@ async function carregarMotos() {
             <td>${moto.mark}</td>
             <td>${moto.cylinder}</td>
             <td>${moto.ano}</td>
-            <td><button onclick="removeMoto(${moto.id})">Delete</button></td>
+            <td><button onclick="removeMoto(${moto.id})">Deletar</button></td>
+            <td><button onclick="">Editar</button></td>
+            <td><button onclick="window.location.href='/src/public/viewpeca.html'">Visualizar</button></td>
         </tr>`;
         tabela.innerHTML += linha;
     });

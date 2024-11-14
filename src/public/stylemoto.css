@@ -1,0 +1,174 @@
+/* Reset e Configurações Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f4f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Container Principal */
+.container {
+    width: 100%;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #b71c1c;
+    color: #fff;
+    padding: 20px;
+    border-radius: 12px 12px 0 0;
+    position: relative;
+}
+
+header h1 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* Botão de Voltar */
+header button {
+    background-color: #fff;
+    color: #b71c1c;
+    border: 2px solid #b71c1c;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    transition: all 0.3s ease;
+}
+
+header button:hover {
+    background-color: #b71c1c;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/* Formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+/* Labels */
+form label {
+    font-size: 18px;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 8px;
+    width: 100%;
+    text-align: left;
+}
+
+/* Inputs */
+form input,
+form textarea {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+form input:focus,
+form textarea:focus {
+    border-color: #b71c1c;
+    outline: none;
+}
+
+/* Estilo para Textarea */
+form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Botão de Envio */
+form button {
+    background-color: #b71c1c;
+    color: #fff;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+form button:hover {
+    background-color: #c62828;
+    transform: translateY(-3px);
+}
+
+/* Botões no Cabeçalho */
+header button {
+    background-color: #fff;
+    color: #b71c1c;
+    border: 2px solid #b71c1c;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    transition: all 0.3s ease;
+}
+
+header button:hover {
+    background-color: #b71c1c;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    form label {
+        font-size: 16px;
+    }
+
+    form input,
+    form textarea {
+        width: 100%;
+    }
+
+    form button {
+        width: 100%;
+    }
+}
