@@ -5,9 +5,18 @@ class PartController
 {
     private $part;
 
-    public function __construct($db)
+    private static $INSTANCE;
+
+    public static function getInstance(){
+        if(!isset(self::$INSTANCE)){
+            self::$INSTANCE = new PartController();
+        }
+        return self::$INSTANCE;
+    }
+    
+    public function __construct()
     {
-        $this->part = new Part($db);
+        $this->part = new Part(Database::getInstance());
     }
 
     public function list()
@@ -20,7 +29,7 @@ class PartController
         $data = json_decode(file_get_contents("php://input"));
         if (isset($data->tipo) && isset($data->price) && isset($data->descricao) && isset($data->id_motors)) {
             try {
-                $this->parts->create($data->tipo, $data->price, $data->descricao, $data->id_motors);
+                $this->part->create($data->tipo, $data->price, $data->descricao, $data->id_motors);
 
                 http_response_code(201);
                 echo json_encode(["message" => "Moto Cadastrada Com Sucesso"]);

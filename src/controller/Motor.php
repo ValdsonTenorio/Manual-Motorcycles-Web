@@ -5,9 +5,18 @@ class MotorController
 {
     private $motor;
 
-    public function __construct($db)
+    private static $INSTANCE;
+
+    public static function getInstance(){
+        if(!isset(self::$INSTANCE)){
+            self::$INSTANCE = new MotorController();
+        }
+        return self::$INSTANCE;
+    }
+
+    public function __construct()
     {
-        $this->motor = new Motor($db);
+        $this->motor = new Motor(Database::getInstance());
     }
 
     public function list()
@@ -21,11 +30,12 @@ class MotorController
         $data = json_decode(file_get_contents("php://input"));
         if (isset($data->nome) && isset($data->mark) && isset($data->cylinder) && isset($data->ano)) {
             try {
-                $this->motors->create($data->nome, $data->mark, $data->cylinder, $data->ano);
+                $this->motor->create($data->nome, $data->mark, $data->cylinder, $data->ano);
 
                 http_response_code(201);
                 echo json_encode(["message" => "Moto Cadastrada Com Sucesso"]);
             } catch (\Throwable $th) {
+                print_r($th);
                 http_response_code(500);
                 echo json_encode(["message" => "Erro ao cadastrar moto"]);
             }

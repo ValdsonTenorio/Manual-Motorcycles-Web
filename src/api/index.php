@@ -4,27 +4,30 @@ require_once '../controller/Motor.php';
 require_once '../controller/Part.php';
 require_once '../Router.php';
 
-header("Content-type: application/json; charset=UTF-8");
+$router = Router::getInstance();
 
-$router = new Router();
-$motor_controller = new MotorController($pdo);
+$router->add('GET', '/motor', function () { 
+    if(isset($_GET["id"])){
+        MotorController::getInstance()->getById($_GET["id"]);
+    } else {
+        MotorController::getInstance()->list();
+    }
+});
+$router->add('POST', '/motor', function () { MotorController::getInstance()->create();});
+$router->add('DELETE', '/motor', function () { MotorController::getInstance()->delete();});
+$router->add('PUT', '/motor', function () { MotorController::getInstance()->update();});
 
-$router->add('GET', '/motor', [$motor_controller, 'list']);
-$router->add('GET', '/motor/{id}', [$motor_controller, 'getById']);
-$router->add('POST', '/motor', [$motor_controller, 'create']);
-$router->add('DELETE', '/motor/{id}', [$motor_controller, 'delete']);
-$router->add('PUT', '/motor/{id}', [$motor_controller, 'update']);
+$router->add('GET', '/part', function () { 
+    if(isset($_GET["id"])){
+        PartController::getInstance()->getById($_GET["id"]);
+    } else {
+        PartController::getInstance()->list();
+    }
+});
 
-$part_controller = new PartController($pdo);
 
-$router->add('GET', '/part', [$part_controller, 'list']);
-$router->add('GET', '/part/{id}', [$part_controller, 'getById']);
-$router->add('POST', '/part', [$part_controller, 'create']);
-$router->add('DELETE', '/part/{id}', [$part_controller, 'delete']);
-$router->add('PUT', '/part/{id}', [$part_controller, 'update']);
+$router->add('POST', '/part', function () { PartController::getInstance()->create();});
+$router->add('DELETE', '/part', function () { PartController::getInstance()->delete();});
+$router->add('PUT', '/part', function () { PartController::getInstance()->update();});
 
-$requestedPath = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
-$pathItems = explode("/", $requestedPath);
-$requestedPath = "/" . $pathItems[3] . ($pathItems[4] ? "/" . $pathItems[4] : "");
-
-$router->dispatch($requestedPath);
+Router::getInstance()->process();

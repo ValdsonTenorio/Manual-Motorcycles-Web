@@ -3,6 +3,7 @@ require_once '../config/db.php';
 
 class Motor
 {
+
     private $conn;
 
     public function __construct($db)
@@ -12,7 +13,7 @@ class Motor
 
     public function create($nome, $mark, $cylinder,$ano)
     {
-        $sql = "INSERT INTO motors (nome,mark,cylinder,year ) VALUES (:nome, :mark, :cylinder,:ano)";
+        $sql = "INSERT INTO motors (nome,mark,cylinder,ano) VALUES (:nome, :mark, :cylinder,:ano)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':nome', $nome);
         $stmt->bindParam(':mark', $mark);
